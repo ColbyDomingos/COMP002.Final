@@ -15,3 +15,15 @@ const winningConditions = [
     [0, 4, 8],
     [2, 4, 6]
 ];
+
+board.addEventListener("click", (e) => {
+    const cell = e.target;
+    const index = cell.getAttribute("data-index");
+
+    if (cell.classList.contains("cell") && boardState[index] === "" && gameActive) {
+        cell.textContent = currentPlayer;
+        boardState[index] = currentPlayer;
+        checkWin();
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+    }
+});
