@@ -1,0 +1,68 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 18px;
+	padding: .5em 2em;
+	text-align: center;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h2 {
+	font-size: 2.25em;
+}
+
+#button-play-again {
+	margin: 0 auto;
+}
+
+#container {
+	margin: 2em auto;
+	width: 100%;
+}
+
+#game-board {
+	display: grid;
+	grid-template-columns: repeat(3, 150px);
+	margin: 0 auto;
+	width: 450px
+}
+
+#play-again {
+	margin: 0 auto;
+}
+
+#square-0, #square-1, #square-3, #square-4 {
+	border-width: 0 2px 2px 0;
+}
+
+#square-2, #square-5 {
+	border-width: 0 0 2px 0;
+}
+
+#square-6, #square-7 {
+	border-width: 0 2px 0 0;
+}
+
+#square-8 {
+	border-width: 0;
+}
+
+#turn {}
+
+.game-square {
+	border-color: lightgrey;
+	border-style: solid;
+	display: inline;
+	font-size: 6em;
+	line-height: 120px;
+	padding: 20px 40px;
+	height: 150px;
+	width: 150px;
+}
