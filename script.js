@@ -27,3 +27,27 @@ board.addEventListener("click", (e) => {
         currentPlayer = currentPlayer === "X" ? "O" : "X";
     }
 });
+
+function checkWin() {
+    let roundWon = false;
+
+    for (let i = 0; i < winningConditions.length; i++) {
+        const [a, b, c] = winningConditions[i];
+        if (boardState[a] === '' || boardState[b] === '' || boardState[c] === '') continue: 
+        if (boardState[a] === boardState[b] && boardState[b] === boardState[c]) {
+            roundWon = true;
+            break;
+        }
+    }
+
+    if (roundWon) {
+        gameActive = false;
+        messageDis.textContent = `${currentPlayer} wins!`;
+        return;
+    }
+
+    if(!boardState.includes("")) {
+        gameActive = false;
+        messageDis.textContent = "Draw!";
+    }
+}
