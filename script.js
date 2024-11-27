@@ -68,3 +68,14 @@ function updateScoreboard() {
     scoreboardO.textContent = oScore;
 }
 
+function handlePLayAgainClick() {
+    currentPlayer = "X";
+    gameOver = false;
+    board = ["", "", "", "", "", "", "", "", ""];
+    turnTracker.textContent = currentPlayer;
+
+    squares.forEach((square) => {
+        square.textContent = "";
+    });
+}
+
