@@ -11,13 +11,13 @@ let board = ["", "", "", "", "", "", "", "", ""];
 let xScore = parseInt(localStorage.getItem("xScore")) || 0;
 let oScore = parseInt(localStorage.getItem("oScore")) || 0;
 
-function handledSquareClick(event) {
+function handleSquareClick(event) {
     if (gameOver) return;
 
     const square = event.target;
     const index = parseInt(square.id.split("-")[1]);
 
-    if (board[index] === "") return;
+    if (board[index] !== "") return;
 
     board[index] = currentPlayer;
     square.textContent = currentPlayer;
@@ -27,7 +27,7 @@ function handledSquareClick(event) {
 }
 
 function checkForWin() {
-    const winningCombinations = [
+    const winConditions = [
         [0, 1, 2],
         [3, 4, 5],
         [6, 7, 8],
@@ -38,7 +38,7 @@ function checkForWin() {
         [2, 4, 6],
     ];
 
-    for (const combination of winConditions) {
+    for (const condition of winConditions) {
         if (board[condition[0]] === board[condition[1]] && board[condition[1]] === board[condition[2]] && board[condition[0]] !== "") {
             gameOver = true;
             if (board[condition[0]] === "X") {
@@ -80,7 +80,7 @@ function handlePLayAgainClick() {
 }
 
 squares.forEach((square) => {
-    square.addEventListener("click", handledSquareClick);
+    square.addEventListener("click", handleSquareClick);
 });
 playAgainButton.addEventListener("click", handlePLayAgainClick);
 
