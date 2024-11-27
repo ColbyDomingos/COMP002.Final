@@ -65,32 +65,32 @@ function checkForWin() { //Entire logic for checking for a win
     }
 }
 
-function checkForTie() {
-    if(!board.includes("")) {
-        gameOver = true;
-        alert("It's a tie!");
+function checkForTie() { // Its in the name it checks for a tie
+    if(!board.includes("")) { // If the board does not contain an empty string
+        gameOver = true; // Stops the game
+        alert("It's a tie!"); // Alerts it's a tie
     }
 }
 
-function updateScoreboard() {
-    scoreboardX.textContent = xScore;
-    scoreboardO.textContent = oScore;
+function updateScoreboard() { // Updates the scoreboard at the bottom of the page
+    scoreboardX.textContent = xScore; // Sets the X score to the scoreboard
+    scoreboardO.textContent = oScore; // Sets the O score to the scoreboard
 }
 
-function handlePLayAgainClick() {
-    currentPlayer = "X";
-    gameOver = false;
-    board = ["", "", "", "", "", "", "", "", ""];
-    turnTracker.textContent = currentPlayer;
+function handlePLayAgainClick() { // Handles the click event for the play again button
+    currentPlayer = "X"; // Sets the current player to X no matter what
+    gameOver = false; // Sets the game over to false
+    board = ["", "", "", "", "", "", "", "", ""]; // Sets the board to empty
+    turnTracker.textContent = currentPlayer; // Sets the turn tracker to the current player
 
-    squares.forEach((square) => {
-        square.textContent = "";
+    squares.forEach((square) => { // Loops through the squares
+        square.textContent = ""; // Sets the text of the square to empty
     });
 }
 
-squares.forEach((square) => {
-    square.addEventListener("click", handleSquareClick);
+squares.forEach((square) => { // Loops through the squares
+    square.addEventListener("click", handleSquareClick); // Adds a click event listener to each square
 });
-playAgainButton.addEventListener("click", handlePLayAgainClick);
+playAgainButton.addEventListener("click", handlePLayAgainClick); // Adds a click event listener to the play again button
 
-updateScoreboard();
+updateScoreboard(); // Updates the scoreboard at the bottom of the page
