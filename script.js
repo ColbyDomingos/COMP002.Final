@@ -62,3 +62,9 @@ function checkForTie() {
         alert("It's a tie!");
     }
 }
+
+function updateScoreboard() {
+    scoreboardX.textContent = xScore;
+    scoreboardO.textContent = oScore;
+}
+
