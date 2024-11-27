@@ -25,3 +25,33 @@ function handledSquareClick(event) {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     turnTracker.textContent = currentPlayer;
 }
+
+function checkForWin() {
+    const winningCombinations = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+
+    for (const combination of winConditions) {
+        if (board[condition[0]] === board[condition[1]] && board[condition[1]] === board[condition[2]] && board[condition[0]] !== "") {
+            gameOver = true;
+            if (board[condition[0]] === "X") {
+                xScore++;
+                localStorage.setItem("xScore", xScore);
+                alert("X wins!");
+            } else {
+                oScore++;
+                localStorage.setItem("oScore", oScore);
+                alert("O wins!");
+            }
+            updateScoreboard();
+            return;
+        }
+    }
+}
