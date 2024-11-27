@@ -55,3 +55,10 @@ function checkForWin() {
         }
     }
 }
+
+function checkForTie() {
+    if(!board.includes("")) {
+        gameOver = true;
+        alert("It's a tie!");
+    }
+}
