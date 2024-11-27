@@ -79,3 +79,9 @@ function handlePLayAgainClick() {
     });
 }
 
+squares.forEach((square) => {
+    square.addEventListener("click", handledSquareClick);
+});
+playAgainButton.addEventListener("click", handlePLayAgainClick);
+
+updateScoreboard();
