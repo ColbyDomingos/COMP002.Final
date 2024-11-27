@@ -21,9 +21,14 @@ function handleSquareClick(event) {
 
     board[index] = currentPlayer;
     square.textContent = currentPlayer;
+
+    checkForWin();
+    checkForTie();
     
-    currentPlayer = currentPlayer === "X" ? "O" : "X";
-    turnTracker.textContent = currentPlayer;
+    if (!gameOver) {
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+        turnTracker.textContent = "Current Turn: " + currentPlayer;
+    }
 }
 
 function checkForWin() {
@@ -39,7 +44,10 @@ function checkForWin() {
     ];
 
     for (const condition of winConditions) {
-        if (board[condition[0]] === board[condition[1]] && board[condition[1]] === board[condition[2]] && board[condition[0]] !== "") {
+        if (board[condition[0]] === board[condition[1]] 
+            && board[condition[1]] === board[condition[2]] 
+            && board[condition[0]] !== "") {
+
             gameOver = true;
             if (board[condition[0]] === "X") {
                 xScore++;
