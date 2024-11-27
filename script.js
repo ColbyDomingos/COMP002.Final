@@ -14,53 +14,53 @@ let oScore = parseInt(localStorage.getItem("oScore")) || 0; // Sets the score to
 function handleSquareClick(event) { // Handles the click event for each square with some basic game logic
     if (gameOver) return; // If the game is over, continue on to the next part of code
 
-    const square = event.target;
-    const index = parseInt(square.id.split("-")[1]);
+    const square = event.target; // Gets the square that was clicked
+    const index = parseInt(square.id.split("-")[1]); // Gets the index of the square
 
-    if (board[index] !== "") return;
+    if (board[index] !== "") return; // If the square is not empty, continue on to the next part of code
 
-    board[index] = currentPlayer;
-    square.textContent = currentPlayer;
+    board[index] = currentPlayer; // Sets the square to the current player
+    square.textContent = currentPlayer; // Sets the text of the square to the current player
 
-    checkForWin();
-    checkForTie();
+    checkForWin(); // Calls the check for win function
+    checkForTie(); // Calls the check for tie function
     
-    if (!gameOver) {
-        currentPlayer = currentPlayer === "X" ? "O" : "X";
-        turnTracker.textContent = "Current Turn: " + currentPlayer;
-    }
+    if (!gameOver) { // If the game is not over
+        currentPlayer = currentPlayer === "X" ? "O" : "X"; // Switches the current player
+        turnTracker.textContent = "Current Turn: " + currentPlayer; // Updates the turn tracker
+    } 
 }
 
-function checkForWin() {
-    const winConditions = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6],
+function checkForWin() { //Entire logic for checking for a win
+    const winConditions = [ // Sets the win conditions for possible win combinations
+        [0, 1, 2], // Win condition 1
+        [3, 4, 5], // Win condition 2
+        [6, 7, 8], // Win condition 3
+        [0, 3, 6], // Win condition 4 
+        [1, 4, 7], // Win condition 5
+        [2, 5, 8], // Win condition 6
+        [0, 4, 8], // Win condition 7
+        [2, 4, 6], // Win condition 8
     ];
 
-    for (const condition of winConditions) {
-        if (board[condition[0]] === board[condition[1]] 
-            && board[condition[1]] === board[condition[2]] 
-            && board[condition[0]] !== ""
+    for (const condition of winConditions) { // Loops through the win conditions checking for a winning combination
+        if (board[condition[0]] === board[condition[1]]  // If the three squares in the win condition are the same
+            && board[condition[1]] === board[condition[2]]  // If the three squares in the win condition are the same
+            && board[condition[0]] !== "" // If the three squares in the win condition are not empty
         ) {
 
-            gameOver = true;
-            if (board[condition[0]] === "X") {
-                xScore++;
-                localStorage.setItem("xScore", xScore);
-                alert("X wins!");
-            } else {
-                oScore++;
-                localStorage.setItem("oScore", oScore);
-                alert("O wins!");
+            gameOver = true; // Stops the game
+            if (board[condition[0]] === "X") {  // If the three squares in the win condition are X
+                xScore++; // Adds 1 to the X score
+                localStorage.setItem("xScore", xScore); // Sets the X score to local storage
+                alert("X wins!"); // Alerts X wins
+            } else { // If the three squares in the win condition are O
+                oScore++; // Adds 1 to the O score
+                localStorage.setItem("oScore", oScore); // Sets the O score to local storage
+                alert("O wins!"); // Alerts O wins
             }
-            updateScoreboard();
-            return;
+            updateScoreboard(); // Updates the scoreboard
+            return; // Exits the function
         }
     }
 }
