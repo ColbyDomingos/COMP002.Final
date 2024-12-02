@@ -66,7 +66,7 @@ function checkForWin() { //Entire logic for checking for a win
 }
 
 function checkForTie() { // Its in the name it checks for a tie
-    if(!board.includes("")) { // If the board does not contain an empty string
+    if(!board.includes("") && !checkForWin) { // If the board does not contain an empty string
         gameOver = true; // Stops the game
         alert("It's a tie!"); // Alerts it's a tie
     }
